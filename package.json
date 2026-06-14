@@ -1,0 +1,12 @@
+{
+  "name": "porfolio-personal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node serve.mjs",
+    "clean": "rm -rf dist",
+    "dev": "node build.mjs --watch | node serve.mjs"
+  }
+}

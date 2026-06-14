@@ -1,0 +1,94 @@
+{
+  "name": "Melendo",
+  "headline": "Ingeniero del Software centrado en DevOps y automatización de procesos",
+  "about": "Me considero un apasionado por la informática y la tecnología. Cuento con experiencia en desarrollo, automatización, entornos ágiles y administración de sistemas Linux. Mi interés principal se encuentra en aplicar bases de DevOps para la automatización de flujos y mejora de la eficiencia.",
+  "email": "nachomelendo@gmail.com",
+  "github": "https://github.com/Melendo",
+  "linkedin": "https://www.linkedin.com/in/melendo",
+  "educationList": [
+    {
+      "title": "Ingeniería del Software - Universidad Complutense Madrid",
+      "meta": "2020 - 2026"
+    },
+    {
+      "title": "Computer Science (ERASMUS) - UGent",
+      "meta": "2023"
+    },
+    {
+      "title": "Bachillerato tecnológico - IES Diego Velazquez",
+      "meta": "2018 - 2020"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Español",
+      "level": "Nativo"
+    },
+    {
+      "name": "Inglés",
+      "level": "C1 ~ C2"
+    },
+    {
+      "name": "Neerlandés",
+      "level": "B2"
+    }
+  ],
+  "experience": [
+    {
+      "title": "DEVOPS & AUTOMATION INTERN",
+      "company": "Logicalis Spain",
+      "period": "2026 - Actualidad",
+      "bullets": [
+        "Desarrollo de automatizaciones y pipelines CI/CD en Azure DevOps mediante Python, Bash y YAML.",
+        "Integración de servicios mediante APIs REST y automatización de flujos con Power Automate.",
+        "Gestión, estandarización y mantenimiento de repositorios de código para múltiples clientes trabajando bajo Scrum."
+      ]
+    },
+    {
+      "title": "SECRETARIO/PRESIDENCIA | ASOCIACIÓN DISKOBOLO",
+      "company": "Asociación universitaria",
+      "period": "2023 - Presente",
+      "bullets": [
+        "Secretario de la asociación (2023-2025) y presidente (2025-actualidad).",
+        "Encargado de la gestión y organización de actas y documentación.",
+        "Realización y gestión de eventos divulgativos como charlas y lúdicos para la facultad.",
+        "Gestión de los servidores e infraestructura de la asociación para el lanzamiento de servicios."
+      ]
+    }
+  ],
+  "technologies": [
+    "C++",
+    "C",
+    "Java",
+    "JavaScript",
+    "Python",
+    "Bash",
+    "GitHub Actions",
+    "Azure Pipelines",
+    "Git/GitHub",
+    "Docker",
+    "Ansible",
+    "SQL / PL-SQL"
+  ],
+  "skills": [
+    "Desarrollo web y móvil",
+    "Automatización de procesos",
+    "Metodologías ágiles (Scrum y Kanban)",
+    "Diseño de algoritmos",
+    "Gestión de servidores y redes (Linux)",
+    "Bases de DevOps (CI-CD)",
+    "Desarrollo agéntico con IA",
+    "Hablar en público",
+    "Resolución de problemas",
+    "Comunicación clara",
+    "Trabajo en equipo",
+    "Definición y especificación de requisitos"
+  ],
+  "stack": [
+    "SPA / PWA architectures",
+    "Node.js",
+    "Python",
+    "Ansible",
+    "Linux (Arch / Debian)"
+  ]
+}

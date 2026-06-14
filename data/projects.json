@@ -1,0 +1,446 @@
+[
+  {
+    "id": "climbit",
+    "title": "ClimbIt",
+    "role": "Aplicación web o móvil",
+    "stack": [
+      "JavaScript",
+      "PWA",
+      "SPA",
+      "Docker",
+      "PostgreSQL"
+    ],
+    "description": "ClimbIt es una aplicación web y móvil pensada para organizar la actividad de escaladores dentro de rocódromos. La aplicación permite a cada usuario registrarse como escalador, gestionar su perfil, suscribirse a rocódrom…",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/ClimbIt"
+      },
+      {
+        "label": "Demo",
+        "url": "https://app.climbit.es"
+      }
+    ]
+  },
+  {
+    "id": "botmeriendo",
+    "title": "BotMeriendo - Guía de Usuario",
+    "role": "Bot de Discord",
+    "stack": [
+      "Python",
+      "Docker",
+      "Discord"
+    ],
+    "description": "Bienvenido a la guía de uso de BotMeriendo. Este bot ha sido diseñado para centralizar la música, utilidades y la diversión en tu servidor de Discord.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/BotMeriendo"
+      }
+    ]
+  },
+  {
+    "id": "keeperly",
+    "title": "Keeperly",
+    "role": "Aplicación web o móvil",
+    "stack": [
+      "Java",
+      "Android"
+    ],
+    "description": "Keeperly es un proyecto que busca facilitar la gestión de finanzas personales mediante una aplicación móvil intuitiva y con funciones innovadoras. Keeperly permite al usuario la creación de presupuestos personalizados,…",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/Keeperly"
+      }
+    ]
+  },
+  {
+    "id": "clublagartos",
+    "title": "🦎 Club Lagartos Web",
+    "role": "Aplicación web o móvil",
+    "stack": [
+      "HTML"
+    ],
+    "description": "Pasión por el Deporte, Diseño Premium y Adrenalina.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/ClubLagartos"
+      },
+      {
+        "label": "Demo",
+        "url": "https://www.clublagartos.org/"
+      }
+    ]
+  },
+  {
+    "id": "salnaya",
+    "title": "Salnaya",
+    "role": "Sitio web y experiencia visual",
+    "stack": [
+      "CSS"
+    ],
+    "description": "Carta web del menú de la cafetería de la Facultad de Informática de la Universidad Complutense de Madrid.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/Salnaya"
+      },
+      {
+        "label": "Demo",
+        "url": "https://salnaya.es/"
+      }
+    ]
+  },
+  {
+    "id": "pablodlp",
+    "title": "Portfolio de Fotografía - PabloDLP",
+    "role": "Aplicación web o móvil",
+    "stack": [
+      "CSS"
+    ],
+    "description": "Este repositorio contiene el código fuente del sitio web personal y portfolio de PabloDLP, un fotógrafo profesional especializado en deportes de alto rendimiento, naturaleza y paisajes.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/PabloDLP"
+      },
+      {
+        "label": "Demo",
+        "url": "https://pablodlp.com/"
+      }
+    ]
+  },
+  {
+    "id": "memoriaclimbit",
+    "title": "MemoriaClimbIt",
+    "role": "Memoria técnica y documentación",
+    "stack": [
+      "TeX",
+      "LaTeX"
+    ],
+    "description": "Memoria para el Trabajo de Fin de Grado de Ingeniería del Software ClimbIt",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/MemoriaClimbIt"
+      }
+    ]
+  },
+  {
+    "id": "porfoliopersonal",
+    "title": "PorfolioPersonal",
+    "role": "Repositorio de desarrollo",
+    "stack": [],
+    "description": "Porfolio para mostrar mis proyectitos y tonterías de forma bonica",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/PorfolioPersonal"
+      }
+    ]
+  },
+  {
+    "id": "melendo",
+    "title": "Melendo",
+    "role": "Repositorio de desarrollo",
+    "stack": [],
+    "description": "Bienvenidos a los curiosos 👋! Soy Melendo y oficialmente ya soy un Ingeniero de Software, aquí se pueden ver la mayoría de mis proyectitos y cacharreos.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/Melendo"
+      }
+    ]
+  },
+  {
+    "id": "aw-ejercicios",
+    "title": "Aplicaciones-Web",
+    "role": "Sitio web y experiencia visual",
+    "stack": [
+      "HTML"
+    ],
+    "description": "Ejercicios sobre la asignatura de aplicaciones web de la UCM",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/AW-Ejercicios"
+      }
+    ]
+  },
+  {
+    "id": "appreservapadel",
+    "title": "AppReservaPadel",
+    "role": "Repositorio de desarrollo",
+    "stack": [
+      "Python"
+    ],
+    "description": "Aplicación que usa selenium para reservar pistas de padel",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/AppReservaPadel"
+      }
+    ]
+  },
+  {
+    "id": "buscadorlibrospwa",
+    "title": "Buscador de libros PWA",
+    "role": "Aplicación web o móvil",
+    "stack": [
+      "JavaScript",
+      "PWA",
+      "SPA"
+    ],
+    "description": "Esta aplicación es una PWA (Progressive Web Application) que permite la búsqueda de libros mediante la API de “Google Books”. Además esta aplicación permite funcionar en modo “offline” donde se pueden ver los libros gua…",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/BuscadorLibrosPWA"
+      }
+    ]
+  },
+  {
+    "id": "bganoscodigo",
+    "title": "Código B-Ganos",
+    "role": "Memoria técnica y documentación",
+    "stack": [
+      "Java"
+    ],
+    "description": "BGanos es una plataforma integral de gestión transaccional de jardines botánicos recreacionales. Al",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/BGanosCodigo"
+      }
+    ]
+  },
+  {
+    "id": "juezfal",
+    "title": "DomJudge de Fundamentos de la Algoritmia",
+    "role": "Proyecto académico y algoritmos",
+    "stack": [
+      "C++",
+      "Algoritmos"
+    ],
+    "description": "Soluciones a los problemas probuestos en la asginatura de segundo curso Fundamentos de la Algoritmia en la facultad de informatica de la UCM.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/JuezFAL"
+      }
+    ]
+  },
+  {
+    "id": "juezed",
+    "title": "Juez",
+    "role": "Proyecto académico y algoritmos",
+    "stack": [
+      "C++"
+    ],
+    "description": "Ejercicios realizado durante la asignatura Estructura de Datos",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/JuezED"
+      }
+    ]
+  },
+  {
+    "id": "jueztais",
+    "title": "JuezTAIS",
+    "role": "Proyecto académico y algoritmos",
+    "stack": [
+      "C++",
+      "Algoritmos"
+    ],
+    "description": "Repositorio en donde se realizan los ejercicios del domjudge de la asignatura Técnicas Algorítmicas de Ingeniería del Software",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/JuezTAIS"
+      }
+    ]
+  },
+  {
+    "id": "bganosmodelo",
+    "title": "Modelo B-Ganos",
+    "role": "Repositorio de desarrollo",
+    "stack": [
+      "UML"
+    ],
+    "description": "Este repositorio contiene todos los diagramas UML utilizados para la planificación y estructuración del proyecto BGanosCodigo",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/BGanosModelo"
+      }
+    ]
+  },
+  {
+    "id": "mythicalmingle",
+    "title": "MythicalMingle",
+    "role": "Aplicación web o móvil",
+    "stack": [
+      "JavaScript"
+    ],
+    "description": "Mythical Mingle es un juego que ataca a la nostalgia, a aquellas tardes al",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/MythicalMingle"
+      }
+    ]
+  },
+  {
+    "id": "fp1-parchis",
+    "title": "Parchis",
+    "role": "Proyecto académico y algoritmos",
+    "stack": [
+      "C++"
+    ],
+    "description": "Este parchis fue creado en 2020 como proyecto de la asignatura de Fundamentos de la programación 1, y al parecer por aquel entonces desconocía el uso de bucles y básicamente de cualquier tipo de buenas técnicas para la…",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/FP1-Parchis"
+      }
+    ]
+  },
+  {
+    "id": "tp1-plantsvszombiesv1",
+    "title": "Práctica de TPI del curso 2022-23",
+    "role": "Proyecto académico o aplicación Java",
+    "stack": [
+      "Java"
+    ],
+    "description": "- [Práctica 1](./enunciados/practica1/practica1.md)",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/TP1-PlantsVsZombiesV1"
+      }
+    ]
+  },
+  {
+    "id": "practicasic",
+    "title": "PracticasIC",
+    "role": "Repositorio de desarrollo",
+    "stack": [
+      "JavaScript"
+    ],
+    "description": "Practicas evaluadas asignatura Ingeniería del Conocimiento de la facultad de Informática de la UCM",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/PracticasIC"
+      }
+    ]
+  },
+  {
+    "id": "fp2-rumikub",
+    "title": "Rumikub",
+    "role": "Proyecto académico y algoritmos",
+    "stack": [
+      "C++"
+    ],
+    "description": "Okay este proyecto se realizo en 2020 o 2021 para la asignatura de Fundamentos de la Programación 2. De la misma manera que mis maravillosos parchis y torneo de Tennis la codificación y buenas técnicas brillan por su au…",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/FP2-Rumikub"
+      }
+    ]
+  },
+  {
+    "id": "scheam",
+    "title": "Scheam",
+    "role": "Proyecto académico o aplicación Java",
+    "stack": [
+      "Java"
+    ],
+    "description": "El proyecto Scheam ha sido realizado en contexto de la asignatura de Ingeniería del Software II, del grado Ingeniería del Software. Ha sido desarrollado por ocho alumnos de la asignatura.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/Scheam"
+      }
+    ]
+  },
+  {
+    "id": "fp1-torneotennis",
+    "title": "TorneoTenis",
+    "role": "Proyecto académico y algoritmos",
+    "stack": [
+      "C++"
+    ],
+    "description": "Buenas de nuevo, este proyecto fue creado en 2021 y fue de la asingatura Fundamentos de la Programación 1",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/FP1-TorneoTennis"
+      }
+    ]
+  },
+  {
+    "id": "tp1-plantsvszombiesv2",
+    "title": "TP1 PlantsVSZombiesV2",
+    "role": "Proyecto académico o aplicación Java",
+    "stack": [
+      "Java"
+    ],
+    "description": "Repositorio de GitHub.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/TP1-PlantsVSZombiesV2"
+      }
+    ]
+  },
+  {
+    "id": "tp2-simuladorfisico",
+    "title": "TP2",
+    "role": "Proyecto académico o aplicación Java",
+    "stack": [
+      "Java"
+    ],
+    "description": "Empezando a las 7 de la mañana me levante sin ganas de levantar la cabeza y con menos emoción que el madrid ganando la Champions me levante para luchar un dia mas conmigo",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/TP2-SimuladorFisico"
+      }
+    ]
+  },
+  {
+    "id": "tp2-simuladorfisicografico",
+    "title": "TP2 SimuladorFisicoGrafico",
+    "role": "Proyecto académico o aplicación Java",
+    "stack": [
+      "Java"
+    ],
+    "description": "Vamos con la interfaz gráfica",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/TP2-SimuladorFisicoGrafico"
+      }
+    ]
+  },
+  {
+    "id": "unifest",
+    "title": "UniFest",
+    "role": "Sitio web y experiencia visual",
+    "stack": [
+      "JavaScript"
+    ],
+    "description": "Unifest es una aplicación web que gestiona eventos universitarios.",
+    "links": [
+      {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/UniFest"
+      }
+    ]
+  }
+]
