@@ -1,5 +1,6 @@
 [
   {
+    "id": "climbit",
     "title": "ClimbIt",
     "role": "Aplicación Web Progresiva",
     "stack": [
@@ -26,6 +27,7 @@
     ]
   },
   {
+    "id": "botmeriendo",
     "title": "BotMeriendo",
     "role": "Bot de Discord",
     "stack": [
@@ -42,6 +44,7 @@
     ]
   },
   {
+    "id": "keeperly",
     "title": "Keeperly",
     "role": "Aplicación móvil",
     "stack": [
@@ -57,6 +60,7 @@
     ]
   },
   {
+    "id": "clublagartos",
     "title": "Web del Club Lagartos",
     "role": "Página web",
     "stack": [
@@ -77,6 +81,7 @@
     ]
   },
   {
+    "id": "pablodlp",
     "title": "Portfolio de Fotografía - PabloDLP",
     "role": "Portfolio web",
     "stack": [
@@ -97,6 +102,7 @@
     ]
   },
   {
+    "id": "salnaya",
     "title": "Salnaya",
     "role": "Carta web ",
     "stack": [
@@ -117,6 +123,7 @@
     ]
   },
   {
+    "id": "mythicalmingle",
     "title": "MythicalMingle",
     "role": "Videojuego web",
     "stack": [

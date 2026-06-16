@@ -120,6 +120,19 @@ svg {
   color: var(--accent-strong);
 }
 
+.link-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.link-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
 .shell {
   padding: 1rem 0 3rem;
 }
@@ -300,6 +313,62 @@ h3 {
   color: var(--muted);
 }
 
+.project-detail-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.project-img-container {
+  display: block;
+  position: relative;
+  padding: 6px;
+  background: 
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 16px 16px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 16px 16px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 16px 16px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 100% 0 / 16px 16px no-repeat,
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 100% / 16px 16px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 0 100% / 16px 16px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 100% / 16px 16px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 100% 100% / 16px 16px no-repeat;
+}
+
+.project-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid rgba(232, 228, 217, 0.05);
+}
+
+.project-teaser-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.project-teaser-grid .teaser-media {
+  width: 100%;
+  max-width: 160px;
+  justify-self: end;
+}
+
+.project-teaser-grid .project-img-container {
+  padding: 4px;
+  background: 
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 10px 10px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 10px 10px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 10px 10px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 100% 0 / 10px 10px no-repeat,
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 100% / 10px 10px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 0 100% / 10px 10px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 100% / 10px 10px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 100% 100% / 10px 10px no-repeat;
+}
+
 @media (max-width: 720px) {
   .topbar {
     flex-direction: column;
@@ -317,5 +386,20 @@ h3 {
   .section-heading {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .project-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-teaser-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-teaser-grid .teaser-media {
+    max-width: 100%;
+    justify-self: start;
   }
 }

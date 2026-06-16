@@ -1,0 +1,1 @@
+BotMeriendo es un bot de Discord diseñado para animar tu servidor permitiendo buscar, reproducir y gestionar música de YouTube de forma sencilla. Además de sus comandos musicales, incluye herramientas de registro (logs) y manejo de errores para garantizar una experiencia fluida y estable.

@@ -1,0 +1,1 @@
+Keeperly es una intuitiva aplicación móvil diseñada para facilitar la gestión de tus finanzas personales mediante la creación de presupuestos totalmente personalizados. Al vincular los gastos de tus cuentas por categorías, permite visualizar claramente el progreso financiero y el dinero disponible, ayudándote a alcanzar tus metas económicas de forma sencilla.

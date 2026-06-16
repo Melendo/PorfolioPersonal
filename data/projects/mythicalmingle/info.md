@@ -1,0 +1,1 @@
+Mythical Mingle es un juego nostálgico que revive la ilusión de coleccionar e intercambiar cromos con amigos. Mediante la apertura de sobres digitales, te permite completar diversos álbumes temáticos en constante actualización. Combina el coleccionismo con el entretenimiento social para conectar a los jugadores.
