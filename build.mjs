@@ -326,9 +326,9 @@ function renderProjectTeaser(project, currentRoute, compact = false) {
   const targetRoute = `/projects/${slugify(project.title)}/`;
 
   return `
+    <p class="eyebrow">${escapeHtml(project.role)}</p>
     <article class="teaser project-teaser-grid">
       <div class="teaser-info">
-        <p class="eyebrow">${escapeHtml(project.role)}</p>
         <div class="project-title-container">
           ${project.id ? `
           <div class="project-logo-container mobile-only">
