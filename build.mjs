@@ -217,15 +217,16 @@ function renderProjectsIndex({ profile: userProfile, projects: userProjects }) {
   return `
     ${renderHeader(userProfile, 'projects', '/projects/')}
     <main class="shell">
-      <section class="stack stack--gap-md">
-        <h1>Proyectos</h1>
-        <p class="intro">Listado de los proyectos más relevantes que he realizado.</p>
-        <br>
-      </section>
+      <div class="stack stack--gap-lg">
+        <section class="hero stack stack--gap-md">
+          <h1>Proyectos</h1>
+          <p class="intro">Listado de los proyectos más relevantes que he realizado.</p>
+        </section>
 
-      <section class="project-list">
-        ${userProjects.map((project) => renderProjectTeaser(project, '/projects/', true)).join('')}
-      </section>
+        <section class="project-list">
+          ${userProjects.map((project) => renderProjectTeaser(project, '/projects/', true)).join('')}
+        </section>
+      </div>
     </main>
   `;
 }
@@ -236,15 +237,16 @@ function renderBlogIndex({ profile: userProfile, blogPosts: userBlogPosts }) {
   return `
     ${renderHeader(userProfile, 'blog', '/blog/')}
     <main class="shell">
-      <section class="stack stack--gap-md">
-        <h1>Blog</h1>
-        <p class="intro">Pensamientos, ideas y reflexiones.</p>
-        <br>
-      </section>
+      <div class="stack stack--gap-lg">
+        <section class="hero stack stack--gap-md">
+          <h1>Blog</h1>
+          <p class="intro">Pensamientos, ideas y reflexiones.</p>
+        </section>
 
-      <section class="post-list">
-        ${sortedPosts.map((post) => renderPostTeaser(post, '/blog/', true)).join('')}
-      </section>
+        <section class="post-list">
+          ${sortedPosts.map((post) => renderPostTeaser(post, '/blog/', true)).join('')}
+        </section>
+      </div>
     </main>
   `;
 }
@@ -259,7 +261,14 @@ function renderProjectDetail({ profile: userProfile, project, infoContent }) {
         <article class="stack stack--gap-lg post-article project-info">
           <section class="stack stack--gap-sm">
             <p class="eyebrow">Proyecto</p>
-            <h1>${escapeHtml(project.title)}</h1>
+            <div class="project-title-container">
+              ${project.id ? `
+              <div class="project-logo-container mobile-only">
+                <img class="project-logo-img" src="${assetHref(route, `projects/${project.id}/gen.webp`)}" alt="${escapeHtml(project.title)}">
+              </div>
+              ` : ''}
+              <h1>${escapeHtml(project.title)}</h1>
+            </div>
             <p class="lede">${escapeHtml(project.role)}</p>
           </section>
 
@@ -270,7 +279,7 @@ function renderProjectDetail({ profile: userProfile, project, infoContent }) {
 
         <div class="project-media stack stack--gap-lg">
           ${project.id ? `
-          <div class="project-img-container">
+          <div class="project-img-container desktop-only">
             <img class="project-img" src="${assetHref(route, `projects/${project.id}/gen.webp`)}" alt="${escapeHtml(project.title)}">
           </div>
           ` : ''}
@@ -320,7 +329,12 @@ function renderProjectTeaser(project, currentRoute, compact = false) {
     <article class="teaser project-teaser-grid">
       <div class="teaser-info">
         <p class="eyebrow">${escapeHtml(project.role)}</p>
-        <div class="stack stack--gap-xs">
+        <div class="project-title-container">
+          ${project.id ? `
+          <div class="project-logo-container mobile-only">
+            <img class="project-logo-img" src="${assetHref(currentRoute, `projects/${project.id}/gen.webp`)}" alt="${escapeHtml(project.title)}">
+          </div>
+          ` : ''}
           <h2>${escapeHtml(project.title)}</h2>
         </div>
         <p>${escapeHtml(project.description)}</p>
@@ -332,7 +346,7 @@ function renderProjectTeaser(project, currentRoute, compact = false) {
         <a class="text-link" href="${routeHref(currentRoute, targetRoute)}">[Más información]</a>
       </div>
       ${project.id ? `
-      <div class="teaser-media">
+      <div class="teaser-media desktop-only">
         <div class="project-img-container">
           <img class="project-img" src="${assetHref(currentRoute, `projects/${project.id}/gen.webp`)}" alt="${escapeHtml(project.title)}">
         </div>
