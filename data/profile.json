@@ -1,5 +1,6 @@
 {
   "name": "Melendo",
+  "acronym": "NachoMelendo",
   "headline": "Ingeniero del Software centrado en DevOps y automatización de procesos",
   "about": "Me considero un apasionado por la informática y la tecnología. Cuento con experiencia en desarrollo, automatización, entornos ágiles y administración de sistemas Linux. Mi interés principal se encuentra en aplicar bases de DevOps para la automatización de flujos y mejora de la eficiencia.",
   "email": "nachomelendo@gmail.com",
@@ -12,11 +13,7 @@
     },
     {
       "title": "Computer Science (ERASMUS) - UGent",
-      "meta": "2023"
-    },
-    {
-      "title": "Bachillerato tecnológico - IES Diego Velazquez",
-      "meta": "2018 - 2020"
+      "meta": "2023 - 2024"
     }
   ],
   "languages": [

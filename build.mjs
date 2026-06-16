@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const rootDir = process.cwd();
 const dataDir = path.join(rootDir, 'data');
-const srcDir = path.join(rootDir, 'src');
+const assetsDir = path.join(rootDir, 'assets');
 const distDir = path.join(rootDir, 'dist');
 
 const profile = await readJson(path.join(dataDir, 'profile.json'));
@@ -25,11 +25,10 @@ await fs.rm(distDir, { recursive: true, force: true });
 await fs.mkdir(distDir, { recursive: true });
 
 await copyStaticAsset('styles.css');
-await copyStaticAsset('app.js');
-await copyStaticAsset('manifest.webmanifest');
 await copyStaticAsset('icon.svg');
+await copyStaticAsset('FP.jpeg');
 
-const routes = ['/','/projects/','/blog/'];
+const routes = ['/', '/projects/', '/blog/'];
 
 await writePage('index.html', renderPage({
   route: '/',
@@ -53,9 +52,9 @@ await writePage('blog/index.html', renderPage({
 }));
 
 for (const project of projects) {
-  const route = `/projects/${slugify(project.id || project.title)}/`;
+  const route = `/projects/${slugify(project.title)}/`;
   routes.push(route);
-  await writePage(`projects/${slugify(project.id || project.title)}/index.html`, renderPage({
+  await writePage(`projects/${slugify(project.title)}/index.html`, renderPage({
     route,
     title: `${project.title} — ${profile.name}`,
     description: project.description,
@@ -74,21 +73,24 @@ for (const post of blogPosts) {
   }));
 }
 
-await writePage('sw.js', renderServiceWorker(routes));
-
-await writePage('404.html', renderPage({
+const html404 = renderPage({
   route: '/',
   title: `No encontrado — ${profile.name}`,
   description: 'Página no encontrada.',
   body: `
-    <section class="stack stack--gap-lg">
-      <p class="eyebrow">404</p>
-      <h1>Página no encontrada.</h1>
-      <p>El enlace no existe o se ha movido. Vuelve al inicio para seguir navegando.</p>
-      <p><a class="text-link" href="${routeHref('/', '/')}">Volver al inicio</a></p>
-    </section>
+    ${renderHeader(profile, '', '/')}
+    <main class="shell">
+      <section class="stack stack--gap-lg">
+        <p class="eyebrow">404</p>
+        <h1>Página no encontrada.</h1>
+        <p>El enlace no existe o se ha movido. Vuelve al inicio para seguir navegando.</p>
+        <p><a class="text-link" href="${routeHref('/', '/')}">Volver al inicio</a></p>
+      </section>
+    </main>
   `
-}));
+}).replace('<head>', '<head>\n    <base href="/">');
+
+await writePage('404.html', html404);
 
 function renderHome({ profile: userProfile }) {
   return `
@@ -96,24 +98,25 @@ function renderHome({ profile: userProfile }) {
     <main class="shell">
       <div class="stack stack--gap-lg">
         <section class="hero stack stack--gap-md">
-          <p class="eyebrow">Portfolio</p>
           <h1>${escapeHtml(userProfile.name)}</h1>
           <p class="lede">${escapeHtml(userProfile.headline)}</p>
           <p class="intro">${escapeHtml(userProfile.about)}</p>
         </section>
 
         <section class="stack stack--gap-md">
-          <h2>Centro de enlaces</h2>
-          <ul class="link-list" aria-label="Centro de enlaces">
-            <li><a class="text-link" href="mailto:${escapeAttribute(userProfile.email)}">[Email]</a></li>
-            <li><a class="text-link" href="${escapeHtml(userProfile.linkedin)}" target="_blank" rel="noreferrer">[LinkedIn]</a></li>
-            <li><a class="text-link" href="${escapeHtml(userProfile.github)}" target="_blank" rel="noreferrer">[GitHub]</a></li>
-            <li><a class="text-link" href="https://www.youtube.com/@nachomelendo3930" target="_blank" rel="noreferrer">[YouTube]</a></li>
-          </ul>
+          <h2>Enlaces</h2>
+          <article class="teaser">
+            <ul class="link-list" aria-label="Centro de enlaces">
+              <li><a class="text-link" href="mailto:${escapeAttribute(userProfile.email)}">[Email]</a></li>
+              <li><a class="text-link" href="${escapeHtml(userProfile.linkedin)}" target="_blank" rel="noreferrer">[LinkedIn]</a></li>
+              <li><a class="text-link" href="${escapeHtml(userProfile.github)}" target="_blank" rel="noreferrer">[GitHub]</a></li>
+              <li><a class="text-link" href="https://www.youtube.com/@nachomelendo3930" target="_blank" rel="noreferrer">[YouTube]</a></li>
+            </ul>
+          </article>
         </section>
 
         <section class="stack stack--gap-md">
-          <h2>Educación</h2>
+          <h2>Formación</h2>
           <div class="project-list">
             <article class="teaser">
                 ${userProfile.educationList.map((item) => renderDetailCard(item.title, item.meta, [])).join('')}
@@ -133,29 +136,35 @@ function renderHome({ profile: userProfile }) {
         <section class="stack stack--gap-md">
           <h2>Experiencia laboral</h2>
           <div class="project-list">
-            ${userProfile.experience.map((item) => renderExperienceCard(item)).join('')}
+            <article class="teaser">
+              ${userProfile.experience.map((item) => renderExperienceCard(item)).join('')}
+            </article>
           </div>
         </section>
 
         <section class="stack stack--gap-md">
           <h2>Tecnologías</h2>
-          <ul class="inline-list" aria-label="Tecnologías">
-            ${userProfile.technologies.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
-          </ul>
+          <article class="teaser">
+            <ul class="inline-list" aria-label="Tecnologías">
+              ${userProfile.technologies.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+            </ul>
+          </article>
         </section>
 
         <section class="stack stack--gap-md">
           <h2>Habilidades</h2>
-          <ul class="inline-list" aria-label="Habilidades">
-            ${userProfile.skills.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
-          </ul>
+          <article class="teaser">
+            <ul class="inline-list" aria-label="Habilidades">
+              ${userProfile.skills.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+            </ul>
+          </article>
         </section>
 
         <section class="stack stack--gap-md">
           <h2>Más información</h2>
           <div class="project-list">
-            ${renderMoreInfoCard('Proyectos', 'Listado completo de trabajos, demos y repositorios que amplían esta presentación.', '/projects/', '[Ver proyectos]', '/')}
-            ${renderMoreInfoCard('Blog', 'Notas técnicas, documentación y procesos prácticos sobre homelab, Linux y despliegues estáticos.', '/blog/', '[Ir al blog]', '/')}
+            ${renderMoreInfoCard('> Proyectos', 'Listado de los proyectos más relevantes que he realizado.', '/projects/', '[Ver proyectos]', '/')}
+            ${renderMoreInfoCard('> Blog', 'Mis pensamientos, ideas y reflexiones.', '/blog/', '[Ir al blog]', '/')}
           </div>
         </section>
       </div>
@@ -168,9 +177,9 @@ function renderProjectsIndex({ profile: userProfile, projects: userProjects }) {
     ${renderHeader(userProfile, 'projects', '/projects/')}
     <main class="shell">
       <section class="stack stack--gap-md">
-        <p class="eyebrow">Portfolio</p>
         <h1>Proyectos</h1>
-        <p class="intro">Cada ficha separa la arquitectura global de la aportación concreta para que el foco quede en el trabajo realizado.</p>
+        <p class="intro">Listado de los proyectos más relevantes que he realizado.</p>
+        <br>
       </section>
 
       <section class="project-list">
@@ -187,9 +196,9 @@ function renderBlogIndex({ profile: userProfile, blogPosts: userBlogPosts }) {
     ${renderHeader(userProfile, 'blog', '/blog/')}
     <main class="shell">
       <section class="stack stack--gap-md">
-        <p class="eyebrow">Notas técnicas</p>
         <h1>Blog</h1>
-        <p class="intro">Artículos, documentación y procesos prácticos sobre homelab, Linux, hardware y despliegues estáticos.</p>
+        <p class="intro">Pensamientos, ideas y reflexiones.</p>
+        <br>
       </section>
 
       <section class="post-list">
@@ -200,7 +209,7 @@ function renderBlogIndex({ profile: userProfile, blogPosts: userBlogPosts }) {
 }
 
 function renderProjectDetail({ profile: userProfile, project }) {
-  const route = `/projects/${slugify(project.id || project.title)}/`;
+  const route = `/projects/${slugify(project.title)}/`;
 
   return `
     ${renderHeader(userProfile, 'projects', route)}
@@ -251,20 +260,23 @@ function renderBlogPost({ profile: userProfile, post }) {
 }
 
 function renderProjectTeaser(project, currentRoute, compact = false) {
-  const targetRoute = `/projects/${slugify(project.id || project.title)}/`;
+  const targetRoute = `/projects/${slugify(project.title)}/`;
 
   return `
+    <p class="eyebrow">${escapeHtml(project.role)}</p>
     <article class="teaser">
       <div class="stack stack--gap-xs">
-        <p class="eyebrow">${escapeHtml(project.id)}</p>
-        <h3><a class="text-link" href="${routeHref(currentRoute, targetRoute)}">${escapeHtml(project.title)}</a></h3>
-        <p>${escapeHtml(project.role)}</p>
+        <h2>${escapeHtml(project.title)}</h2>
       </div>
       <p>${escapeHtml(project.description)}</p>
+      <br>
       <ul class="inline-list">
         ${project.stack.slice(0, compact ? 3 : project.stack.length).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
       </ul>
+      <br>
+      <a class="text-link" href="${routeHref(currentRoute, targetRoute)}">[Más información]</a>
     </article>
+    <br>
   `;
 }
 
@@ -310,7 +322,6 @@ function renderLanguageCard(item) {
 
 function renderExperienceCard(item) {
   return `
-    <article class="teaser">
       <div class="stack stack--gap-xs">
         <h3>${escapeHtml(item.title)}</h3>
         <p style="margin-bottom: 1rem;" ><em>${escapeHtml(item.company)}</em> · ${escapeHtml(item.period)}</p>
@@ -318,7 +329,7 @@ function renderExperienceCard(item) {
       <ul class="bullet-list">
         ${item.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}
       </ul>
-    </article>
+      <br>
   `;
 }
 
@@ -343,7 +354,12 @@ function renderHeader(userProfile, activeSection, currentRoute) {
 
   return `
     <header class="topbar">
-      <a class="brand" href="${routeHref(currentRoute, '/')}">${escapeHtml(userProfile.name)}</a>
+      <a class="brand" href="${routeHref(currentRoute, '/')}">
+        <span class="brand-img-container">
+          <img class="brand-img" src="${assetHref(currentRoute, 'FP.jpeg')}" alt="${escapeHtml(userProfile.name)}">
+        </span>
+        <span class="brand-text">${escapeHtml(userProfile.acronym)}</span>
+      </a>
       <nav aria-label="Principal">
         <ul class="nav-list">
           ${navItems.map(([href, label, section]) => `
@@ -357,7 +373,7 @@ function renderHeader(userProfile, activeSection, currentRoute) {
 
 function renderLinks(links, currentRoute) {
   return links.map((link) => `
-    <li><a class="text-link" href="${escapeHtml(link.url)}" target="_blank" rel="noreferrer">${escapeHtml(link.label)}</a></li>
+    <li><a class="text-link" href="${escapeHtml(link.url)}" target="_blank" rel="noreferrer">[${escapeHtml(link.label)}]</a></li>
   `).join('');
 }
 
@@ -370,7 +386,6 @@ function renderPage({ route, title, description, body }) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="${escapeAttribute(description)}">
     <meta name="theme-color" content="#1e1e1e">
-    <link rel="manifest" href="${assetHref(currentRoute, 'manifest.webmanifest')}">
     <link rel="icon" href="${assetHref(currentRoute, 'icon.svg')}" type="image/svg+xml">
     <link rel="stylesheet" href="${assetHref(currentRoute, 'styles.css')}">
     <title>${escapeHtml(title)}</title>
@@ -378,62 +393,13 @@ function renderPage({ route, title, description, body }) {
   <body>
     ${body}
     <footer class="site-footer shell">
-      <p> Si te gusta el portfolio lo puedes adaptar y usar desde <a class="text-link" href="https://github.com/Melendo/PorfolioPersonal" target="_blank" rel="noreferrer">este repositorio</a>.</p>
+      <p> Enlace al código fuente en <a class="text-link" href="https://github.com/Melendo/PorfolioPersonal" target="_blank" rel="noreferrer">[este repositorio]</a>.</p>
     </footer>
-    <script src="${assetHref(currentRoute, 'app.js')}" type="module"></script>
   </body>
 </html>`;
 }
 
-function renderServiceWorker(routes) {
-  const precache = [...new Set([
-    ...routes,
-    '/index.html',
-    '/projects/index.html',
-    '/blog/index.html',
-    '/404.html',
-    '/styles.css',
-    '/app.js',
-    '/manifest.webmanifest',
-    '/icon.svg'
-  ])];
-
-  return `const cacheName = 'porfolio-personal-v2';
-const assets = ${JSON.stringify(precache)};
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(cacheName).then((cache) => cache.addAll(assets))
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key !== cacheName).map((key) => caches.delete(key))
-    ))
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') {
-    return;
-  }
-
-  const isNavigationRequest = event.request.mode === 'navigate';
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) return response;
-      return fetch(event.request).catch(() => {
-        return isNavigationRequest ? caches.match('/index.html') : caches.match('/');
-      });
-    })
-  );
-});
-`;
-}
+// Service worker generation removed
 
 function renderMarkdown(markdown, currentRoute) {
   const lines = String(markdown).replace(/\r\n/g, '\n').split('\n');
@@ -627,7 +593,7 @@ async function readContent(entryContent) {
 }
 
 async function copyStaticAsset(fileName) {
-  const source = path.join(srcDir, fileName);
+  const source = path.join(assetsDir, fileName);
   const target = path.join(distDir, fileName);
   await fs.copyFile(source, target);
 }

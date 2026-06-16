@@ -5,7 +5,7 @@ Portfolio estático y blog minimalista generado a partir de contenido local. La 
 ## Arquitectura
 
 - `data/`: contenido fuente del sitio.
-- `src/`: estilos, service worker, manifest e icono.
+- `assets/`: estilos, icono y foto de perfil.
 - `build.mjs`: generador estático que renderiza a `dist/`.
 
 ## Desarrollo
