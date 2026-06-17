@@ -4,8 +4,8 @@ Portfolio estático y blog minimalista generado a partir de contenido local. La 
 
 ## Arquitectura
 
-- `data/`: contenido fuente del sitio.
-- `data/assets/`: estilos, icono y foto de perfil.
+- `data/`: contenido dinámico y estructura de datos del sitio (organizado en `inicio/`, `projects/` y `blog/`).
+- `resources/`: recursos estáticos no dinámicos (estilos, icono y componentes de iconos).
 - `build.mjs`: generador estático que renderiza a `dist/`.
 
 ## Desarrollo

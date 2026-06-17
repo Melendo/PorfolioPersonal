@@ -1,14 +1,15 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { EmailIcon, LinkedInIcon, GitHubIcon, YouTubeIcon } from './resources/components.mjs';
 
 const rootDir = process.cwd();
 const dataDir = path.join(rootDir, 'data');
-const assetsDir = path.join(dataDir, 'assets');
+const assetsDir = path.join(rootDir, 'resources');
 const distDir = path.join(rootDir, 'dist');
 
-const profile = await readJson(path.join(dataDir, 'profile.json'));
-const projects = await readJson(path.join(dataDir, 'projects.json'));
-const blogEntries = await readJson(path.join(dataDir, 'blog.json'));
+const profile = await readJson(path.join(dataDir, 'inicio', 'profile.json'));
+const projects = await readJson(path.join(dataDir, 'projects', 'projects.json'));
+const blogEntries = await readJson(path.join(dataDir, 'blog', 'blog.json'));
 
 const blogPosts = await Promise.all(
   blogEntries.map(async (entry) => {
@@ -26,7 +27,7 @@ await fs.mkdir(distDir, { recursive: true });
 
 await copyStaticAsset('styles.css');
 await copyStaticAsset('icon.svg');
-await copyStaticAsset('FP.jpeg');
+await fs.copyFile(path.join(dataDir, 'inicio', 'FP.jpeg'), path.join(distDir, 'FP.jpeg'));
 
 const routes = ['/', '/projects/', '/blog/'];
 
@@ -130,25 +131,25 @@ function renderHome({ profile: userProfile }) {
             <ul class="link-list" aria-label="Centro de enlaces">
               <li>
                 <a class="text-link" href="mailto:${escapeAttribute(userProfile.email)}">
-                  <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  ${EmailIcon}
                   [Email]
                 </a>
               </li>
               <li>
                 <a class="text-link" href="${escapeHtml(userProfile.linkedin)}" target="_blank" rel="noreferrer">
-                  <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  ${LinkedInIcon}
                   [LinkedIn]
                 </a>
               </li>
               <li>
                 <a class="text-link" href="${escapeHtml(userProfile.github)}" target="_blank" rel="noreferrer">
-                  <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                  ${GitHubIcon}
                   [GitHub]
                 </a>
               </li>
               <li>
                 <a class="text-link" href="https://www.youtube.com/@nachomelendo3930" target="_blank" rel="noreferrer">
-                  <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/></svg>
+                  ${YouTubeIcon}
                   [YouTube]
                 </a>
               </li>
@@ -167,11 +168,14 @@ function renderHome({ profile: userProfile }) {
 
         <section class="stack stack--gap-md">
           <h2>Idiomas</h2>
-          <div class="project-list">
-            <article class="teaser">
-                ${userProfile.languages.map((item) => renderLanguageCard(item)).join('')}
-            </article>
-          </div>
+          <article class="teaser" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; width: 100%;">
+            ${userProfile.languages.map((item) => `
+              <div class="stack stack--gap-xs" style="flex: 1; min-width: 120px;">
+                <h3>${escapeHtml(item.name)}</h3>
+                <p style="color: var(--muted);">${escapeHtml(item.level)}</p>
+              </div>
+            `).join('')}
+          </article>
         </section>
 
         <section class="stack stack--gap-md">
@@ -386,16 +390,7 @@ function renderDetailCard(title, meta, bullets) {
   `;
 }
 
-function renderLanguageCard(item) {
-  return `
-      <div class="stack stack--gap-xs">
-        <h3>${escapeHtml(item.name)}</h3>
-      </div>
-      <p>${escapeHtml(item.level)}</p>
-    </br>
-    
-  `;
-}
+
 
 function renderExperienceCard(item) {
   return `
