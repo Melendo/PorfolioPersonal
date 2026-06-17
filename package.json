@@ -6,7 +6,6 @@
   "scripts": {
     "build": "node build.mjs",
     "preview": "node serve.mjs",
-    "clean": "rm -rf dist",
-    "dev": "node serve.mjs"
+    "clean": "rm -rf dist"
   }
 }
