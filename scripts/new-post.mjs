@@ -97,9 +97,7 @@ async function run() {
 
   // Create markdown file
   const mdPath = path.join(blogDir, `${slug}.md`);
-  const mdContent = `# ${title}
-
-Escribe aquí tu contenido...
+  const mdContent = `Escribe aquí tu contenido...
 `;
 
   try {
