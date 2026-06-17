@@ -1,0 +1,39 @@
+name: Nueva entrada de Blog
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Slug de la entrada (ej. mi-primer-articulo)'
+        required: true
+        type: string
+      title:
+        description: 'Título de la entrada'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  create-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generar estructura del post
+        run: node scripts/new-post.mjs --slug "${{ inputs.slug }}" --title "${{ inputs.title }}"
+
+      - name: Commit y push de los cambios
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore(blog): crear estructura para '${{ inputs.title }}'" || echo "No hay cambios para hacer commit"
+          git push
