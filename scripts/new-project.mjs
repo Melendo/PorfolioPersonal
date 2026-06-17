@@ -105,9 +105,7 @@ async function run() {
   }
 
   const infoPath = path.join(projectFolder, 'info.md');
-  const infoContent = `# ${title}
-
-Escribe aquí la descripción detallada del proyecto...
+  const infoContent = `Escribe aquí la descripción detallada del proyecto...
 `;
 
   try {
