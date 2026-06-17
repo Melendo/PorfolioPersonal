@@ -24,16 +24,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Quitamos la caché de npm porque no la necesitas
+
 
       - name: Generar la web estática
-        # Ejecutamos tu script directamente con Node
+       
         run: node build.mjs
 
       - name: Subir el artifact de Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Tu script ya crea y llena esta carpeta
+          path: './dist'
 
   deploy:
     environment:
