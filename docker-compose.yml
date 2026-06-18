@@ -1,0 +1,16 @@
+services:
+  portfolio:
+    container_name: portfolio_web
+    # Ruta de construcción donde se ubica el Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+
+    networks:
+      - red_tunnels
+
+networks:
+  red_tunnels:
+    # Declarada la red como externa para que compose no intente crearla,
+    external: true
