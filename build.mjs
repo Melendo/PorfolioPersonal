@@ -365,9 +365,9 @@ function renderPostTeaser(post, currentRoute, compact = false) {
   const targetRoute = `/blog/${slugify(post.slug)}/`;
 
   return `
+    <p class="eyebrow">${escapeHtml(formatDate(post.date))}</p>
     <article class="teaser">
       <div class="stack stack--gap-xs">
-        <p class="eyebrow">${escapeHtml(formatDate(post.date))}</p>
         <h3><a class="text-link" href="${routeHref(currentRoute, targetRoute)}">${escapeHtml(post.title)}</a></h3>
       </div>
       <p>${escapeHtml(post.excerpt || summarize(post.content))}</p>
