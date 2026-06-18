@@ -20,8 +20,7 @@ jobs:
       # - 'up -d': Levanta el contenedor en segundo plano (detached mode).
       # - '--build': Fuerza la reconstrucción de la imagen para incorporar los últimos cambios del repositorio.
       # - '--no-cache': Evita el uso de caché durante el build de Docker, asegurando que se descarguen/compilen recursos frescos.
-      # Nota: Docker Compose apagará el contenedor antiguo e iniciará el nuevo de forma secuencial,
-      # lo que reemplaza la versión anterior sin pérdida ni desconexión de la red de túneles docker 'red_tunnels'.
+  
       - name: Reconstruir y levantar contenedor
         run: |
           docker compose up -d --build --no-cache
