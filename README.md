@@ -2,7 +2,7 @@
 Plantilla de portfolio y blog estático minimalista, diseñada para ofrecer la mínima fricción a la hora de publicar tu portfolio. Permite gestionar todo el contenido a través de archivos JSON/Markdown y automatiza la compilación y despliegue a GitHub Pages o servidor propio mediante GitHub Actions.
 
 # Descripción detallada
-El proyecto nace con el objetivo de ofrecer una carta de presentación profesional, ligera y extremadamente fácil de mantener. Al desacoplar completamente los datos de la presentación, los usuarios pueden gestionar su perfil, experiencia laboral, habilidades, proyectos y blog editando archivos JSON y Markdown planos sin necesidad de alterar el código del generador.
+El proyecto nace con el objetivo de ofrecer una carta de presentación profesional, ligera y extremadamente fácil de mantener. Al desacoplar completamente los datos de la presentación, se puede gestionar el perfil, experiencia laboral, habilidades, proyectos y blog editando archivos JSON y Markdown planos sin necesidad de alterar el código del generador.
 
 Para reducir al máximo el rozamiento al configurar y desplegar el portfolio, el repositorio está preconfigurado para compilarse y publicarse automáticamente en **GitHub Pages** en cuestión de minutos. Además, incluye flujos automatizados de **GitHub Actions** que permiten crear nuevos posts o proyectos de forma interactiva directamente desde la interfaz web de GitHub sin necesidad de instalar Node.js ni clonar el repositorio localmente. Para usuarios avanzados, también ofrece soporte para despliegues autónomos en servidores propios mediante contenedores Docker.
 
