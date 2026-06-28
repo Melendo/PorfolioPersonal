@@ -35,7 +35,7 @@
       "Docker",
       "Discord"
     ],
-    "description": "BotMeriendo es un bot de Discord diseñado para animar tu servidor permitiendo buscar, reproducir y gestionar música de YouTube de forma sencilla. Además de sus comandos musicales, incluye herramientas de registro (logs) y manejo de errores para garantizar una experiencia fluida y estable.",
+    "description": "Bot de música y utilidades para Discord, modularizado y listo para desplegar de forma sencilla con Docker. Permite la reproducción de música desde YouTube, control de colas y optimización de recursos mediante auto-desconexión",
     "links": [
       {
         "label": "Repositorio",
