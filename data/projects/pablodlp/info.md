@@ -1,1 +1,5 @@
-PabloDLP es el portfolio web de un fotógrafo profesional especializado en deportes de alto rendimiento, naturaleza y paisajes. Diseñado como una página estática elegante y visual, el sitio destaca su trabajo a través de galerías temáticas e incluye su biografía, los servicios ofrecidos y un formulario de contacto.
+El proyecto consiste en una plataforma web estática diseñada para exhibir el portfolio fotográfico de manera elegante, inmersiva y altamente interactiva. Nace con el propósito de centralizar el trabajo visual del fotógrafo y proporcionar una carta de presentación interactiva para potenciales clientes, patrocinadores y clubes.
+
+### Público Objetivo y Casos de Uso
+- **Atletas y Equipos:** Búsqueda de books profesionales y cobertura de eventos deportivos (ej. MotoGP, World Padel Tour).
+- **Prensa y Medios de Comunicación:** Visualización rápida de galerías temáticas de eventos en pista.
