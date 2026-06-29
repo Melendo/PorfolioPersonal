@@ -35,7 +35,7 @@
       "Docker",
       "Discord"
     ],
-    "description": "Bot de música y utilidades para Discord, modularizado y listo para desplegar de forma sencilla con Docker. Permite la reproducción de música desde YouTube, control de colas y optimización de recursos mediante auto-desconexión",
+    "description": "Bot de música y utilidades para Discord, modularizado y listo para desplegar de forma sencilla con Docker. Permite la reproducción de música desde YouTube, control de colas y optimización de recursos mediante auto-desconexión.",
     "links": [
       {
         "label": "Repositorio",
@@ -68,7 +68,7 @@
       "CSS",
       "JavaScript"
     ],
-    "description": "Club Lagartos es una página web moderna e inmersiva diseñada para los amantes del deporte al aire libre en la sierra madrileña. Totalmente responsiva y actúa como centro digital para sus tres pilares principales: Escuela Deportiva, Trail Running y Rally MTB.",
+    "description": "Sitio web oficial del **Club Lagartos**, una plataforma digital responsiva y moderna diseñada para centralizar la información de sus tres pilares deportivos principales: la Escuela Deportiva, el equipo de Trail Running y el Rally MTB. Resuelve la necesidad de comunicación y captación del club ofreciendo una experiencia de usuario premium e inmersiva.",
     "links": [
       {
         "label": "Repositorio",
