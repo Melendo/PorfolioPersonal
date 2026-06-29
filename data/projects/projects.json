@@ -110,7 +110,7 @@
       "CSS",
       "JavaScript"
     ],
-    "description": "Carta web del menú de la cafetería de la Facultad de Informática de la Universidad Complutense de Madrid. Ofrece una experiencia visual fluida e interactiva para consultar los productos.",
+    "description": "Menú digital interactivo y responsive para la Cafetería Salnaya, diseñado para ofrecer una visualización clara y moderna de la oferta gastronómica del establecimiento con soporte para modo oscuro.",
     "links": [
       {
         "label": "Repositorio",
