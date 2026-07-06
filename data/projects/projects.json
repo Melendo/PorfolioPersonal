@@ -13,16 +13,20 @@
     "description": "ClimbIt es una Aplicación Web Progresiva (PWA) orientada a la gestión de rocódromos y al registro de sesiones de escalada. Nacida como Trabajo de Fin de Grado, permite a los usuarios gestionar su perfil y medir detalladamente su progreso, fomentando así la competición entre amigos.",
     "links": [
       {
-        "label": "Repositorio",
-        "url": "https://github.com/Melendo/ClimbIt"
-      },
-      {
         "label": "Aplicación",
         "url": "https://app.climbit.es"
       },
       {
+        "label": "Repositorio",
+        "url": "https://github.com/Melendo/ClimbIt"
+      },
+      {
         "label": "Memoria TFG",
         "url": "https://github.com/Melendo/MemoriaClimbIt"
+      },
+      {
+        "label": "Presentación",
+        "url": "https://www.youtube.com/watch?v=B736ADEP0yQ"
       }
     ]
   },
