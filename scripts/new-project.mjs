@@ -79,7 +79,7 @@ async function run() {
     title,
     role,
     stack: [],
-    description: '',
+    description: 'Escribe aquí una brebe descripción del proyecto',
     links: []
   };
 
@@ -94,7 +94,7 @@ async function run() {
     process.exit(1);
   }
 
-  // Create project folder and info.md
+  // Create project folder, copy default image and create info.md
   const projectFolder = path.join(projectsDir, id);
   try {
     await fs.mkdir(projectFolder, { recursive: true });
@@ -102,6 +102,15 @@ async function run() {
   } catch (err) {
     console.error('No se pudo crear el directorio del proyecto:', err.message);
     process.exit(1);
+  }
+
+  const genWebpSource = path.join(rootDir, 'resources', 'gen.webp');
+  const genWebpTarget = path.join(projectFolder, 'gen.webp');
+  try {
+    await fs.copyFile(genWebpSource, genWebpTarget);
+    console.log(`✔ Imagen por defecto copiada a: data/projects/${id}/gen.webp`);
+  } catch (err) {
+    console.warn('Advertencia: No se pudo copiar resources/gen.webp:', err.message);
   }
 
   const infoPath = path.join(projectFolder, 'info.md');

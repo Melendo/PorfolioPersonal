@@ -80,7 +80,7 @@ async function run() {
     title,
     date: today,
     tags: [],
-    excerpt: '',
+    excerpt: 'Escribe aquí una brebe descripción de la entrada',
     content: `blog/${slug}.md`
   };
 
