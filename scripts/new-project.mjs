@@ -79,7 +79,7 @@ async function run() {
     title,
     role,
     stack: [],
-    description: 'Escribe aquí una brebe descripción del proyecto',
+    description: 'Escribe aquí una brebe descripción del proyecto...',
     links: []
   };
 

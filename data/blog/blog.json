@@ -9,13 +9,5 @@
     ],
     "excerpt": "Nada que ver por aquí, solo un mensaje de prueba para ver si todo funciona correctamente.",
     "content": "blog/helloWorld.md"
-  },
-  {
-    "slug": "perrosanxe",
-    "title": "Por que Pedro sanxe miente",
-    "date": "2026-07-07",
-    "tags": [],
-    "excerpt": "Escribe aquí una brebe descripción de la entrada",
-    "content": "blog/perrosanxe.md"
   }
 ]
