@@ -142,13 +142,5 @@
         "url": "https://github.com/Melendo/MythicalMingle"
       }
     ]
-  },
-  {
-    "id": "proyecto-inventado",
-    "title": "Proyecto Inventado",
-    "role": "Aplicación de css",
-    "stack": [],
-    "description": "Escribe aquí una brebe descripción del proyecto",
-    "links": []
   }
 ]
