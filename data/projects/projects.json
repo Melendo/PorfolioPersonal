@@ -142,5 +142,13 @@
         "url": "https://github.com/Melendo/MythicalMingle"
       }
     ]
+  },
+  {
+    "id": "proyecto-de-prueba",
+    "title": "Proyecto de prueba",
+    "role": "rol de prueba",
+    "stack": [],
+    "description": "",
+    "links": []
   }
 ]
