@@ -6,6 +6,7 @@ const rootDir = process.cwd();
 const dataDir = path.join(rootDir, 'data');
 const assetsDir = path.join(rootDir, 'resources');
 const distDir = path.join(rootDir, 'dist');
+const buildId = Date.now();
 
 const profile = await readJson(path.join(dataDir, 'inicio', 'profile.json'));
 const projects = await readJson(path.join(dataDir, 'projects', 'projects.json'));
@@ -461,7 +462,7 @@ function renderPage({ route, title, description, body }) {
     <meta name="description" content="${escapeAttribute(description)}">
     <meta name="theme-color" content="#1e1e1e">
     <link rel="icon" href="${assetHref(currentRoute, 'icon.svg')}" type="image/svg+xml">
-    <link rel="stylesheet" href="${assetHref(currentRoute, 'styles.css')}">
+    <link rel="stylesheet" href="${assetHref(currentRoute, 'styles.css')}?v=${buildId}">
     <title>${escapeHtml(title)}</title>
     <script>
       (function() {
