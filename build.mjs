@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { EmailIcon, LinkedInIcon, GitHubIcon, YouTubeIcon, HomeIcon, ProjectsIcon, BlogIcon } from './resources/components.mjs';
+import { EmailIcon, LinkedInIcon, GitHubIcon, YouTubeIcon, HomeIcon, ProjectsIcon, BlogIcon, SunIcon, MoonIcon } from './resources/components.mjs';
 
 const rootDir = process.cwd();
 const dataDir = path.join(rootDir, 'data');
@@ -433,6 +433,12 @@ function renderHeader(userProfile, activeSection, currentRoute) {
           ${navItems.map(([href, label, section, icon]) => `
             <li><a class="${section === activeSection ? 'active' : ''}" href="${routeHref(currentRoute, href)}"><span class="link-inner">${icon}${label}</span></a></li>
           `).join('')}
+          <li class="theme-toggle-li">
+            <button class="theme-toggle-btn" aria-label="Cambiar tema" onclick="toggleTheme()">
+              <span class="sun-icon">${SunIcon}</span>
+              <span class="moon-icon">${MoonIcon}</span>
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
@@ -457,12 +463,33 @@ function renderPage({ route, title, description, body }) {
     <link rel="icon" href="${assetHref(currentRoute, 'icon.svg')}" type="image/svg+xml">
     <link rel="stylesheet" href="${assetHref(currentRoute, 'styles.css')}">
     <title>${escapeHtml(title)}</title>
+    <script>
+      (function() {
+        const theme = document.cookie.split('; ').find(row => row.startsWith('theme='))?.split('=')[1] || 'dark';
+        if (theme === 'light') {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
   </head>
   <body>
     ${body}
     <footer class="site-footer shell">
       <p> Enlace al código fuente en <a class="text-link" href="https://github.com/Melendo/PorfolioPersonal" target="_blank" rel="noreferrer">[este repositorio]</a>.</p>
     </footer>
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.classList.contains('light') ? 'light' : 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        if (next === 'light') {
+          html.classList.add('light');
+        } else {
+          html.classList.remove('light');
+        }
+        document.cookie = 'theme=' + next + '; path=/; max-age=31536000; SameSite=Lax';
+      }
+    </script>
   </body>
 </html>`;
 }
