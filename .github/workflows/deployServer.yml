@@ -4,11 +4,17 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Nuevo Proyecto", "Nueva entrada de Blog"]
+    types:
+      - completed
 
 jobs:
   deploy:
     # REQUISITO: Ejecutarse únicamente en el runner propio instalado en el servidor Debian
     runs-on: self-hosted
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       # Paso 1: Obtener el código fuente más reciente desde GitHub
@@ -23,5 +29,6 @@ jobs:
   
       - name: Reconstruir y levantar contenedor
         run: |
+          docker compose down
           docker compose build --no-cache
           docker compose up -d
