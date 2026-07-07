@@ -81,7 +81,7 @@ svg {
 .brand-img-container {
   display: inline-flex;
   padding: 4px;
-  background: 
+  background:
     linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 10px 10px no-repeat,
     linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 10px 10px no-repeat,
     linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 10px 10px no-repeat,
@@ -114,13 +114,52 @@ svg {
 .nav-list a {
   color: var(--muted);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  transition: color 0.15s ease;
 }
 
-.nav-list a.active {
+.nav-list a::before,
+.nav-list a::after {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.15s ease, width 0.15s ease;
+}
+
+.nav-list a::before {
+  content: "[";
+}
+
+.nav-list a::after {
+  content: "]";
+}
+
+.nav-list a.active,
+.nav-list a:hover {
   color: var(--accent-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.nav-list a.active::before,
+.nav-list a:hover::before,
+.nav-list a.active::after,
+.nav-list a:hover::after {
+  opacity: 1;
+  width: 0.55em;
 }
 
 .link-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.link-inner {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -131,6 +170,13 @@ svg {
   height: 1.15rem;
   color: var(--accent);
   flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+a:hover .link-icon,
+a:focus-visible .link-icon,
+.nav-list a.active .link-icon {
+  color: inherit;
 }
 
 .shell {
@@ -183,6 +229,7 @@ h2 {
 
 h3 {
   font-size: 1.1rem;
+  color: var(--accent);
 }
 
 .lede {
@@ -241,6 +288,17 @@ h3 {
 
 .text-link:hover {
   text-decoration: underline;
+}
+
+.title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.title-link:hover,
+.title-link:focus-visible {
+  text-decoration: none;
+  color: var(--accent-strong);
 }
 
 .inline-list li,
@@ -324,7 +382,7 @@ h3 {
   display: block;
   position: relative;
   padding: 6px;
-  background: 
+  background:
     linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 16px 16px no-repeat,
     linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 16px 16px no-repeat,
     linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 16px 16px no-repeat,
@@ -358,7 +416,7 @@ h3 {
 
 .project-teaser-grid .project-img-container {
   padding: 4px;
-  background: 
+  background:
     linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 10px 10px no-repeat,
     linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 10px 10px no-repeat,
     linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 10px 10px no-repeat,
@@ -387,7 +445,7 @@ h3 {
   display: inline-flex;
   padding: 3px;
   flex-shrink: 0;
-  background: 
+  background:
     linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 8px 8px no-repeat,
     linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 8px 8px no-repeat,
     linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 8px 8px no-repeat,
@@ -447,4 +505,38 @@ h3 {
     max-width: 100%;
     justify-self: start;
   }
+}
+
+/* Gruvbox stripes for page titles */
+.hero h1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.hero h1::before,
+.hero h1::after {
+  content: "";
+  display: inline-block;
+  height: 0.8em;
+  background: linear-gradient(to bottom, 
+    #8ec07c 0%, 
+    #8ec07c 25%, 
+    #458588 25%, 
+    #458588 50%, 
+    #d79921 50%, 
+    #d79921 75%, 
+    #cc241d 75%, 
+    #cc241d 100%
+  );
+  flex-shrink: 0;
+}
+
+.hero h1::before {
+  width: 1.47em;
+}
+
+.hero h1::after {
+  width: 2.2em;
+  clip-path: polygon(0 0, 40% 0, 40% 25%, 60% 25%, 60% 50%, 80% 50%, 80% 75%, 100% 75%, 100% 100%, 0 100%);
 }

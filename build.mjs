@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { EmailIcon, LinkedInIcon, GitHubIcon, YouTubeIcon } from './resources/components.mjs';
+import { EmailIcon, LinkedInIcon, GitHubIcon, YouTubeIcon, HomeIcon, ProjectsIcon, BlogIcon } from './resources/components.mjs';
 
 const rootDir = process.cwd();
 const dataDir = path.join(rootDir, 'data');
@@ -131,26 +131,22 @@ function renderHome({ profile: userProfile }) {
             <ul class="link-list" aria-label="Centro de enlaces">
               <li>
                 <a class="text-link" href="mailto:${escapeAttribute(userProfile.email)}">
-                  ${EmailIcon}
-                  [Email]
+                  [<span class="link-inner">${EmailIcon}Email</span>]
                 </a>
               </li>
               <li>
                 <a class="text-link" href="${escapeHtml(userProfile.linkedin)}" target="_blank" rel="noreferrer">
-                  ${LinkedInIcon}
-                  [LinkedIn]
+                  [<span class="link-inner">${LinkedInIcon}LinkedIn</span>]
                 </a>
               </li>
               <li>
                 <a class="text-link" href="${escapeHtml(userProfile.github)}" target="_blank" rel="noreferrer">
-                  ${GitHubIcon}
-                  [GitHub]
+                  [<span class="link-inner">${GitHubIcon}GitHub</span>]
                 </a>
               </li>
               <li>
                 <a class="text-link" href="https://www.youtube.com/@nachomelendo3930" target="_blank" rel="noreferrer">
-                  ${YouTubeIcon}
-                  [YouTube]
+                  [<span class="link-inner">${YouTubeIcon}YouTube</span>]
                 </a>
               </li>
             </ul>
@@ -208,8 +204,8 @@ function renderHome({ profile: userProfile }) {
         <section class="stack stack--gap-md">
           <h2>Más información</h2>
           <div class="project-list">
-            ${renderMoreInfoCard('> Proyectos', 'Listado de los proyectos más relevantes que he realizado.', '/projects/', '[Ver proyectos]', '/')}
-            ${renderMoreInfoCard('> Blog', 'Mis pensamientos, ideas y reflexiones.', '/blog/', '[Ir al blog]', '/')}
+            ${renderMoreInfoCard('> Proyectos', 'Listado de los proyectos más relevantes que he realizado.', '/projects/', '[Ver proyectos]', '/', ProjectsIcon)}
+            ${renderMoreInfoCard('> Blog', 'Mis pensamientos, ideas y reflexiones.', '/blog/', '[Ir al blog]', '/', BlogIcon)}
           </div>
         </section>
       </div>
@@ -339,7 +335,7 @@ function renderProjectTeaser(project, currentRoute, compact = false) {
             <img class="project-logo-img" src="${assetHref(currentRoute, `projects/${project.id}/gen.webp`)}" alt="${escapeHtml(project.title)}">
           </div>
           ` : ''}
-          <h2>${escapeHtml(project.title)}</h2>
+          <h2><a class="title-link" href="${routeHref(currentRoute, targetRoute)}">${escapeHtml(project.title)}</a></h2>
         </div>
         <p>${escapeHtml(project.description)}</p>
         <br>
@@ -405,11 +401,11 @@ function renderExperienceCard(item) {
   `;
 }
 
-function renderMoreInfoCard(title, description, href, label, currentRoute) {
+function renderMoreInfoCard(title, description, href, label, currentRoute, icon) {
   return `
     <article class="teaser">
       <div class="stack stack--gap-xs">
-        <h3>${escapeHtml(title)}</h3>
+        <h3><span class="link-inner">${icon || ''}${escapeHtml(title)}</span></h3>
       </div>
       <p>${escapeHtml(description)}</p>
       <p><a class="text-link" href="${routeHref(currentRoute, href)}">${escapeHtml(label)}</a></p>
@@ -419,9 +415,9 @@ function renderMoreInfoCard(title, description, href, label, currentRoute) {
 
 function renderHeader(userProfile, activeSection, currentRoute) {
   const navItems = [
-    ['/', 'Inicio', 'home'],
-    ['/projects/', 'Proyectos', 'projects'],
-    ['/blog/', 'Blog', 'blog']
+    ['/', 'Inicio', 'home', HomeIcon],
+    ['/projects/', 'Proyectos', 'projects', ProjectsIcon],
+    ['/blog/', 'Blog', 'blog', BlogIcon]
   ];
 
   return `
@@ -434,8 +430,8 @@ function renderHeader(userProfile, activeSection, currentRoute) {
       </a>
       <nav aria-label="Principal">
         <ul class="nav-list">
-          ${navItems.map(([href, label, section]) => `
-            <li><a class="${section === activeSection ? 'active' : ''}" href="${routeHref(currentRoute, href)}">${label}</a></li>
+          ${navItems.map(([href, label, section, icon]) => `
+            <li><a class="${section === activeSection ? 'active' : ''}" href="${routeHref(currentRoute, href)}"><span class="link-inner">${icon}${label}</span></a></li>
           `).join('')}
         </ul>
       </nav>
