@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Nuevo Proyecto", "Nueva entrada de Blog"]
+    types:
+      - completed
 
 permissions:
   contents: read

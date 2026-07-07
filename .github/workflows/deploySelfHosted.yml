@@ -21,12 +21,7 @@ jobs:
       - name: Checkout de código
         uses: actions/checkout@v4
 
-      # Paso 2: Compilar y levantar la aplicación usando Docker Compose
-      # Explicación del comando de Docker Compose:
-      # - 'up -d': Levanta el contenedor en segundo plano (detached mode).
-      # - '--build': Fuerza la reconstrucción de la imagen para incorporar los últimos cambios del repositorio.
-      # - '--no-cache': Evita el uso de caché durante el build de Docker, asegurando que se descarguen/compilen recursos frescos.
-  
+      # Paso 2: Reconstruir y levantar contenedor
       - name: Reconstruir y levantar contenedor
         run: |
           docker compose down
