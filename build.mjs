@@ -146,7 +146,7 @@ function renderHome({ profile: userProfile }) {
                 </a>
               </li>
               <li>
-                <a class="text-link" href="https://www.youtube.com/@nachomelendo3930" target="_blank" rel="noreferrer">
+                <a class="text-link" href="${escapeHtml(userProfile.youtube)}" target="_blank" rel="noreferrer">
                   [<span class="link-inner">${YouTubeIcon}YouTube</span>]
                 </a>
               </li>
