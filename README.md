@@ -97,7 +97,7 @@ Si prefieres trabajar de forma local desde tu terminal:
 ## Ejecución y Uso
 
 ### A. Despliegue en GitHub Pages (Método Recomendado)
-La pipeline automática definida en `.github/workflows/deploy.yml` compila tu portfolio y lo publica en GitHub Pages tras cada commit en `main`.
+La pipeline automática definida en `.github/workflows/deployGitHubPages.yml` compila tu portfolio y lo publica en GitHub Pages tras cada commit en `main`.
 
 Para activarlo en tu repositorio de GitHub:
 1. Ve a **Settings** > **Pages** en tu repositorio clonado.
@@ -130,7 +130,7 @@ Si cuentas con tu propio servidor (por ejemplo, Debian) y prefieres auto-alojar 
    > [!NOTE]
    > Por defecto, el archivo `docker-compose.yml` está configurado para unirse a una red Docker externa llamada `red_tunnels` (pensada para túneles privados de Cloudflare). Si prefieres exponer un puerto clásico, añade la sección `ports` en la definición del servicio.
 
-2. **Pipeline en Servidor Propio:** La pipeline `.github/workflows/deployServer.yml` está preparada para ejecutarse en un **self-hosted runner** instalado en tu propio servidor. Al hacer push a `main`, descargará los cambios y ejecutará la reconstrucción del contenedor automáticamente.
+2. **Pipeline en Servidor Propio:** La pipeline `.github/workflows/deploySelfHosted.yml` está preparada para ejecutarse en un **self-hosted runner** instalado en tu propio servidor. Al hacer push a `main`, descargará los cambios y ejecutará la reconstrucción del contenedor automáticamente.
 
 ---
 
