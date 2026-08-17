@@ -1,5 +1,5 @@
 
-# ¿Cual es el propósito de este cementerio de pensamientos?
+### ¿Cual es el propósito de este cementerio de pensamientos?
 
 Buenas a mi mismo o a alguién que haya llegado aquí milagrosamente (que lo dudo). Primero que nada me presento, soy Nacho Melendo y oficialmente soy un Ingeniero de Software! (a pesar de que pienso de que este título no tiene demasiado valor). En un inicio entre a la carrera por que me gustaban los videojuegos y me pasaba mucho tiempo en el ordenador, realmente no tenía ni idea de que era la informática. Lo que estoy muy contento es que he tenido la suerte de que este mundo me apasiona y me alegro de poder dedicar mi vida a esto.
 
