@@ -9,5 +9,13 @@
     ],
     "excerpt": "Nada que ver por aquí, solo un mensaje de prueba para ver si todo funciona correctamente.",
     "content": "blog/helloWorld.md"
+  },
+  {
+    "slug": "objetivo-del-blog",
+    "title": "Propósito de este Blog",
+    "date": "2026-08-17",
+    "tags": [],
+    "excerpt": "Escribe aquí una brebe descripción de la entrada...",
+    "content": "blog/objetivo-del-blog.md"
   }
 ]
