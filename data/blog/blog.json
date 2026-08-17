@@ -14,8 +14,10 @@
     "slug": "objetivo-del-blog",
     "title": "Propósito de este Blog",
     "date": "2026-08-17",
-    "tags": [],
-    "excerpt": "Escribe aquí una brebe descripción de la entrada...",
+    "tags": [
+					"Presentación del blog"
+			],
+    "excerpt": "Aquí esta el propósito de poner un blog en mi portfolio,aunque habrá que ver si lo mantengo al día...",
     "content": "blog/objetivo-del-blog.md"
   }
 ]
