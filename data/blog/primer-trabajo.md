@@ -7,7 +7,7 @@ En base al tipo de empresa en el que empieces a trabajar (aunque hay más factor
 - **Alcance del conocimiento**: Cuanto y que tipos de conocimientos adquieres al trabajar.
 - **Flujo de trabajo**: Los métodos que se siguen para avanzar con el proyecto.
 - **Impacto visible**: Como de importantes son tus cambios sobre el proyecto que trabajas.
-- *Mentoría**: Calidad del conocimiento que has adquirido trabajando.
+- **Mentoría**: Calidad del conocimiento que has adquirido trabajando.
 
 ## Empezar en una empresa pequeña
 
