@@ -24,8 +24,11 @@
     "slug": "primer-trabajo",
     "title": "¿Primer trabajo en empresa grande o pequeña?",
     "date": "2026-08-27",
-    "tags": [],
-    "excerpt": "Escribe aquí una brebe descripción de la entrada...",
+    "tags": [
+					"Primer trabajo",
+					"Opinión personal"
+			],
+    "excerpt": "Esto es mi opinión sobre el dilema de si es mejor empezar en una empresa grande o una startup.",
     "content": "blog/primer-trabajo.md"
   }
 ]
