@@ -11,7 +11,7 @@ El propósito de este "blog" no es divulgar noticias ni nada por el estilo, si n
 
 - Por otra parte un objetivo para mí es aprender a explicar de forma clara y fácil de entender conceptos que por su anatomía pueden resultar complicados o tediosos. Por esta misma razón la idea es que todo el texto que se genere aquí no va a ser generado por IA (por que entonces no tendría ningún sentido).
 
-- Por último esto es parte de mi huella digital que en el futuro podré volver aquí y ver lo tonto que soy ahora mismo ajajjaajj. A ver si consigo no abandonar este proyecto para que se quede algo chulo en unos años.
+- Por último esto es parte de mi huella digital que en el futuro podré volver aquí y ver lo que pensaba en estos ratos jajajaja. A ver si consigo no abandonar este proyecto para que se quede algo chulo en unos años.
 
 Un cordial saludo a mi mismo,
 Don Ignacio Melendo Bruggeman.
