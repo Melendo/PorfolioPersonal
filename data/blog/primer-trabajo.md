@@ -23,7 +23,7 @@ En las empresas pequeñas de forma general se empieza en un equipo más pequeño
 
 ## Empezar en una empresa grande
 
-Ahora nos movemos a las empresas "grandes" donde eres un engranaje en un mecanismo más grande de lo que puedes visualizar. De la misma forma desgranamos este caso.
+Ahora nos movemos a las empresas "grandes" donde eres un engranaje en un mecanismo más grande de lo que puedes visualizar. De la misma forma desgranamos este caso:
 
 - **¿Que cosas aprendes?** De forma opuesta a las empresas pequeñas, en este tipo de trabajos tu tienes que volverte muy bueno en un campo específico de forma que si mucha gente se vuevle experta y trabajan en harmonía se logra generar una eficiencia y calidad superior a las empresas pequeñas. 
 
