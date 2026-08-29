@@ -19,7 +19,7 @@ En las empresas pequeñas de forma general se empieza en un equipo más pequeño
 
 - **¿Mi trabajo tiene Impacto?** Una parte muy importante es que lo que tu aportas a la empresa es tangible y puedes ver realmente el efecto que tienen tus cambios (para bien y para mal).
 
-- **¿De quién aprendo?** Al tener mayor libertad en gran parte de las decisiones que tomas eres autodidacta, lo cual  tiene por que estar mal, pero puedes adquirir conocimientos erróneos ya que la experiencia enseña cosas que no se pueden buscar en Google.
+- **¿De quién aprendo?** Al tener mayor libertad en gran parte de las decisiones que tomas eres autodidacta, lo cual no tiene por que estar mal, pero puedes adquirir conocimientos erróneos ya que la experiencia enseña cosas que no se pueden buscar en Google.
 
 ## Empezar en una empresa grande
 
