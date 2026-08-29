@@ -31,8 +31,8 @@ Ahora nos movemos a las empresas "grandes" donde eres un engranaje en un mecanis
 
 - **¿Mi trabajo tiene Impacto?** Este raramente es visible ya que "eres un engranage más", aunque por otra parte al ver el producto final aprecias la cantidad de trabajo que todos han dedicado.
 
-- **¿De quién aprendo?** Por último, el conocimiento que adquieres suele venir dado de personas con mucha experiencia que determinan estándares de trabajo para que todo funciona. Esto hace que el conocimiento adquirido sea de muy buena calidad.
+- **¿De quién aprendo?** Por último, el conocimiento que adquieres suele venir dado de personas con mucha experiencia que determinan estándares de trabajo para que todo funcione. Esto hace que el conocimiento adquirido sea de muy buena calidad.
 
 ## Mi conclusión
 
-[Pues hasta que no termine los otros apartados no lo tengo claro]
+[Pues todavía no lo tengo claro]
