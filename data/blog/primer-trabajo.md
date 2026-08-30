@@ -35,4 +35,4 @@ Ahora nos movemos a las empresas "grandes", donde eres un engranaje en un mecani
 
 ## Mi conclusión
 
-[Pues todavía no lo tengo claro]
+En definitiva, mi punto de vista es que depende de cada persona. Si tienes claro al 100% a que sector te quieres dedicar optaría por empezar en una compañía grande la cual te va a formar y hacer experto en esa materia. En cambio si todavía no lo tienes claro, empezar en una compañía pequeña te da un rango amplio de skills de las cuales posteriormente podrás elegir y especializarte.
