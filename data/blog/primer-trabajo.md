@@ -1,4 +1,5 @@
 Hola, caracola: 
+
 En estos párrafos quiero expresar lo que pienso sobre en qué tipo de empresa empezar (si se tiene la suerte de elegir, claro). A lo que voy es que creo que hay un factor muy importante que cambia completamente la experiencia de los primeros años de trabajo (aunque yo no llevo ni uno) y es el tamaño de la empresa en la que empiezas a trabajar.
 
 ## ¿Qué cosas cambian en función del tipo de empresa?
