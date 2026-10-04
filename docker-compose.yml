@@ -7,10 +7,6 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
 
-    networks:
-      - red_tunnels
-
-networks:
-  red_tunnels:
-    # Declarada la red como externa para que compose no intente crearla,
-    external: true
+    ports:
+      - "3000:80"
+      
