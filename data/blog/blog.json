@@ -35,8 +35,12 @@
     "slug": "importancia-del-orden",
     "title": "La importancia del orden",
     "date": "2026-10-20",
-    "tags": [],
-    "excerpt": "Escribe aquí una brebe descripción de la entrada...",
+    "tags": [
+      "IAfication",
+      "Orden",
+      "Mantenibilidad"
+    ],
+    "excerpt": "Con los cambios de paradigma que ha generado la inteligencia artificial en el ámbito del software, una de las cualidades más importantes en los desarrolladores es mantener ordenado todo aquello que se va generando.",
     "content": "blog/importancia-del-orden.md"
   }
 ]
