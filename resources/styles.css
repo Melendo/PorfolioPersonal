@@ -608,3 +608,295 @@ html.light .sun-icon {
 html.light .moon-icon {
   display: block;
 }
+
+/* Publication multimedia (prose images) and zoom lightbox */
+.prose-figure {
+  margin: 0.75rem 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.prose-img-trigger {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: zoom-in;
+  display: block;
+}
+
+.prose-img-container {
+  display: block;
+  position: relative;
+  padding: 6px;
+  background:
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 16px 16px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 16px 16px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 16px 16px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 100% 0 / 16px 16px no-repeat,
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 100% / 16px 16px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 0 100% / 16px 16px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 100% / 16px 16px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 100% 100% / 16px 16px no-repeat;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.prose-img-trigger:hover .prose-img-container,
+.prose-img-trigger:focus-visible .prose-img-container {
+  background:
+    linear-gradient(to right, var(--accent-strong) 2px, transparent 2px) 0 0 / 18px 18px no-repeat,
+    linear-gradient(to bottom, var(--accent-strong) 2px, transparent 2px) 0 0 / 18px 18px no-repeat,
+    linear-gradient(to left, var(--accent-strong) 2px, transparent 2px) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(to bottom, var(--accent-strong) 2px, transparent 2px) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(to right, var(--accent-strong) 2px, transparent 2px) 0 100% / 18px 18px no-repeat,
+    linear-gradient(to top, var(--accent-strong) 2px, transparent 2px) 0 100% / 18px 18px no-repeat,
+    linear-gradient(to left, var(--accent-strong) 2px, transparent 2px) 100% 100% / 18px 18px no-repeat,
+    linear-gradient(to top, var(--accent-strong) 2px, transparent 2px) 100% 100% / 18px 18px no-repeat;
+  box-shadow: var(--shadow);
+}
+
+.prose-img {
+  display: block;
+  width: 100%;
+  max-height: 32rem;
+  height: auto;
+  object-fit: contain;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+}
+
+.prose-zoom-badge {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.38rem 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border: 1px solid var(--line);
+  opacity: 0.85;
+  transition: opacity 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+  pointer-events: none;
+}
+
+.prose-zoom-badge .link-inner {
+  gap: 0.3rem;
+  line-height: 1;
+}
+
+.prose-zoom-badge .link-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-left: -0.08rem;
+}
+
+.prose-img-trigger:hover .prose-zoom-badge,
+.prose-img-trigger:focus-visible .prose-zoom-badge {
+  opacity: 1;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.prose-caption {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  padding-left: 0.35rem;
+  border-left: 2px solid var(--line);
+}
+
+/* Lightbox modal */
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: color-mix(in srgb, var(--bg) 90%, rgba(0, 0, 0, 0.75));
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox-shell {
+  width: min(100%, var(--max));
+  max-height: 94vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.85rem;
+  pointer-events: none;
+}
+
+.lightbox-toolbar,
+.lightbox-frame,
+.lightbox-hint {
+  pointer-events: auto;
+}
+
+.lightbox-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+}
+
+.lightbox-caption {
+  color: var(--accent-strong);
+  font-size: 0.88rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lightbox-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-left: auto;
+}
+
+.lightbox-btn {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0.2rem 0.35rem;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--accent-strong);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  transition: color 0.15s ease;
+}
+
+.lightbox-btn:hover,
+.lightbox-btn:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.lightbox-btn .zoom-in-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lightbox-btn .zoom-out-icon {
+  display: none;
+  align-items: center;
+}
+
+.lightbox-btn.is-zoomed .zoom-in-icon {
+  display: none;
+}
+
+.lightbox-btn.is-zoomed .zoom-out-icon {
+  display: inline-flex;
+}
+
+.lightbox-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+}
+
+.lightbox-frame {
+  position: relative;
+  padding: 8px;
+  max-width: 100%;
+  max-height: 76vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0 / 18px 18px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0 / 18px 18px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 100% / 18px 18px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 0 100% / 18px 18px no-repeat,
+    linear-gradient(to left, var(--accent) 2px, transparent 2px) 100% 100% / 18px 18px no-repeat,
+    linear-gradient(to top, var(--accent) 2px, transparent 2px) 100% 100% / 18px 18px no-repeat,
+    var(--bg-soft);
+  box-shadow: var(--shadow);
+}
+
+.lightbox-img {
+  display: block;
+  max-width: min(88vw, 70rem);
+  max-height: calc(76vh - 16px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: zoom-in;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+  transform-origin: center center;
+  transition: transform 0.16s ease-out;
+}
+
+.lightbox-viewport.is-zoomed .lightbox-img {
+  cursor: grab;
+}
+
+.lightbox-viewport.is-dragging .lightbox-img {
+  cursor: grabbing;
+  transition: none;
+}
+
+.lightbox-hint {
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .lightbox {
+    padding: 0.75rem;
+  }
+
+  .lightbox-toolbar {
+    padding: 0.45rem 0.65rem;
+  }
+
+  .lightbox-img {
+    max-width: 92vw;
+    max-height: calc(72vh - 16px);
+  }
+}
