@@ -91,6 +91,7 @@ Si prefieres trabajar de forma local desde tu terminal:
 - **Imagen de perfil:** Reemplaza la imagen `data/inicio/FP.jpeg` por tu foto de perfil.
 - **Detalle de proyectos:** Edita `data/projects/<id>/info.md` en formato Markdown y añade su imagen en `data/projects/<id>/gen.webp`.
 - **Artículos de blog:** Edita los archivos `.md` indicados en la clave `"content"` de cada artículo registrado en `data/blog/blog.json`.
+- **Imágenes en publicaciones (Proyectos y Blog):** Sube las imágenes reutilizables a `resources/` (o subcarpetas dentro de `resources/`) e insértalas en cualquier archivo Markdown (`.md`) con la sintaxis `![Pie de foto](/resources/nombre-imagen.webp)`. Al pulsar sobre ellas en la web se abrirán en un visor con zoom interactivo.
 
 ---
 

@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { EmailIcon, LinkedInIcon, GitHubIcon, YouTubeIcon, HomeIcon, ProjectsIcon, BlogIcon, SunIcon, MoonIcon } from './resources/components.mjs';
+import { EmailIcon, LinkedInIcon, GitHubIcon, YouTubeIcon, HomeIcon, ProjectsIcon, BlogIcon, SunIcon, MoonIcon, ZoomInIcon, ZoomOutIcon, CloseIcon } from './resources/components.mjs';
 
 const rootDir = process.cwd();
 const dataDir = path.join(rootDir, 'data');
@@ -28,6 +28,7 @@ await fs.mkdir(distDir, { recursive: true });
 
 await copyStaticAsset('styles.css');
 await copyStaticAsset('icon.svg');
+await copyMediaResources(assetsDir, path.join(distDir, 'resources'));
 await fs.copyFile(path.join(dataDir, 'inicio', 'FP.jpeg'), path.join(distDir, 'FP.jpeg'));
 
 const routes = ['/', '/projects/', '/blog/'];
@@ -478,6 +479,7 @@ function renderPage({ route, title, description, body }) {
     <footer class="site-footer shell">
       <p> Enlace al código fuente en <a class="text-link" href="https://github.com/Melendo/PorfolioPersonal" target="_blank" rel="noreferrer">[este repositorio]</a>.</p>
     </footer>
+    ${renderLightbox()}
     <script>
       function toggleTheme() {
         const html = document.documentElement;
@@ -490,9 +492,217 @@ function renderPage({ route, title, description, body }) {
         }
         document.cookie = 'theme=' + next + '; path=/; max-age=31536000; SameSite=Lax';
       }
+
+      (function initImageLightbox() {
+        const lightbox = document.getElementById('media-lightbox');
+        if (!lightbox) return;
+
+        const viewport = document.getElementById('lightbox-viewport');
+        const img = document.getElementById('lightbox-img');
+        const caption = document.getElementById('lightbox-caption');
+        const zoomBtn = document.getElementById('lightbox-zoom-toggle');
+        const zoomLabel = document.getElementById('lightbox-zoom-label');
+        const closeBtn = document.getElementById('lightbox-close');
+
+        let activeTrigger = null;
+        let scale = 1;
+        let translateX = 0;
+        let translateY = 0;
+        let isDragging = false;
+        let dragMoved = false;
+        let startX = 0;
+        let startY = 0;
+
+        function clampTranslation() {
+          if (scale <= 1) {
+            translateX = 0;
+            translateY = 0;
+            return;
+          }
+          const rect = viewport.getBoundingClientRect();
+          const maxX = Math.max(0, (rect.width * (scale - 1)) / 2);
+          const maxY = Math.max(0, (rect.height * (scale - 1)) / 2);
+          translateX = Math.min(maxX, Math.max(-maxX, translateX));
+          translateY = Math.min(maxY, Math.max(-maxY, translateY));
+        }
+
+        function applyTransform() {
+          clampTranslation();
+          img.style.transform = 'translate3d(' + translateX + 'px, ' + translateY + 'px, 0) scale(' + scale + ')';
+          const zoomed = scale > 1;
+          viewport.classList.toggle('is-zoomed', zoomed);
+          zoomBtn.classList.toggle('is-zoomed', zoomed);
+          zoomBtn.setAttribute('aria-pressed', String(zoomed));
+          zoomLabel.textContent = zoomed ? Math.round(scale * 100) + '%' : 'Zoom +';
+        }
+
+        function setZoom(nextScale, originX, originY) {
+          const clamped = Math.min(4, Math.max(1, nextScale));
+          if (clamped === 1) {
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+          } else {
+            if (typeof originX === 'number' && typeof originY === 'number' && scale === 1) {
+              const rect = viewport.getBoundingClientRect();
+              const offsetX = (rect.width / 2) - (originX - rect.left);
+              const offsetY = (rect.height / 2) - (originY - rect.top);
+              translateX = offsetX * (clamped - 1) * 0.6;
+              translateY = offsetY * (clamped - 1) * 0.6;
+            }
+            scale = clamped;
+          }
+          applyTransform();
+        }
+
+        function openLightbox(trigger) {
+          const src = trigger.getAttribute('data-zoom-src');
+          const alt = trigger.getAttribute('data-zoom-alt') || '';
+          if (!src) return;
+
+          activeTrigger = trigger;
+          img.src = src;
+          img.alt = alt;
+          caption.textContent = alt;
+          caption.hidden = !alt;
+
+          scale = 1;
+          translateX = 0;
+          translateY = 0;
+          applyTransform();
+
+          lightbox.classList.add('is-open');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('lightbox-open');
+          closeBtn.focus();
+        }
+
+        function closeLightbox() {
+          if (!lightbox.classList.contains('is-open')) return;
+          lightbox.classList.remove('is-open');
+          lightbox.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('lightbox-open');
+          img.removeAttribute('src');
+          if (activeTrigger) {
+            activeTrigger.focus();
+            activeTrigger = null;
+          }
+        }
+
+        document.addEventListener('click', function(event) {
+          const trigger = event.target.closest('.prose-img-trigger');
+          if (trigger) {
+            event.preventDefault();
+            openLightbox(trigger);
+          }
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        zoomBtn.addEventListener('click', function() {
+          setZoom(scale > 1 ? 1 : 2.25);
+        });
+
+        lightbox.addEventListener('click', function(event) {
+          if (event.target === lightbox || event.target === viewport) {
+            closeLightbox();
+          }
+        });
+
+        viewport.addEventListener('wheel', function(event) {
+          if (!lightbox.classList.contains('is-open')) return;
+          event.preventDefault();
+          const delta = event.deltaY < 0 ? 0.35 : -0.35;
+          setZoom(scale + delta, event.clientX, event.clientY);
+        }, { passive: false });
+
+        img.addEventListener('pointerdown', function(event) {
+          if (event.button !== 0 && event.pointerType === 'mouse') return;
+          isDragging = true;
+          dragMoved = false;
+          startX = event.clientX - translateX;
+          startY = event.clientY - translateY;
+          if (scale > 1) {
+            viewport.classList.add('is-dragging');
+            img.setPointerCapture(event.pointerId);
+          }
+        });
+
+        img.addEventListener('pointermove', function(event) {
+          if (!isDragging) return;
+          const dx = event.clientX - startX - translateX;
+          const dy = event.clientY - startY - translateY;
+          if (Math.hypot(dx, dy) > 5) {
+            dragMoved = true;
+          }
+          if (scale > 1 && dragMoved) {
+            translateX = event.clientX - startX;
+            translateY = event.clientY - startY;
+            applyTransform();
+          }
+        });
+
+        function finishPointer(event) {
+          if (!isDragging) return;
+          isDragging = false;
+          viewport.classList.remove('is-dragging');
+          if (!dragMoved) {
+            setZoom(scale > 1 ? 1 : 2.25, event.clientX, event.clientY);
+          }
+        }
+
+        img.addEventListener('pointerup', finishPointer);
+        img.addEventListener('pointercancel', function() {
+          isDragging = false;
+          viewport.classList.remove('is-dragging');
+        });
+
+        document.addEventListener('keydown', function(event) {
+          if (!lightbox.classList.contains('is-open')) return;
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            closeLightbox();
+          } else if (event.key === '+' || event.key === '=') {
+            event.preventDefault();
+            setZoom(scale + 0.5);
+          } else if (event.key === '-') {
+            event.preventDefault();
+            setZoom(scale - 0.5);
+          } else if (event.key === '0') {
+            event.preventDefault();
+            setZoom(1);
+          }
+        });
+      })();
     </script>
   </body>
 </html>`;
+}
+
+function renderLightbox() {
+  return `
+    <div class="lightbox" id="media-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Visor de imagen en detalle">
+      <div class="lightbox-shell">
+        <div class="lightbox-toolbar">
+          <p class="lightbox-caption" id="lightbox-caption" hidden></p>
+          <div class="lightbox-actions">
+            <button type="button" class="lightbox-btn" id="lightbox-zoom-toggle" aria-pressed="false" aria-label="Alternar zoom de detalle">
+              [<span class="link-inner"><span class="zoom-in-icon">${ZoomInIcon}</span><span class="zoom-out-icon">${ZoomOutIcon}</span><span id="lightbox-zoom-label">Zoom +</span></span>]
+            </button>
+            <button type="button" class="lightbox-btn" id="lightbox-close" aria-label="Cerrar visor">
+              [<span class="link-inner">${CloseIcon}<span>Cerrar</span></span>]
+            </button>
+          </div>
+        </div>
+        <div class="lightbox-viewport" id="lightbox-viewport">
+          <div class="lightbox-frame">
+            <img class="lightbox-img" id="lightbox-img" alt="" draggable="false">
+          </div>
+        </div>
+        <p class="lightbox-hint">Haz clic en la imagen o usa la rueda del ratón para hacer zoom y arrastra para explorar en detalle · [ESC] para salir</p>
+      </div>
+    </div>
+  `;
 }
 
 // Service worker generation removed
@@ -547,6 +757,15 @@ function renderMarkdown(markdown, currentRoute) {
       continue;
     }
 
+    const imageMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageMatch) {
+      flushParagraph();
+      flushList();
+      const [, alt, rawTarget] = imageMatch;
+      blocks.push(renderProseImage(alt, rawTarget, currentRoute));
+      continue;
+    }
+
     if (/^#{1,3}\s+/.test(line)) {
       flushParagraph();
       flushList();
@@ -592,13 +811,73 @@ function renderMarkdown(markdown, currentRoute) {
   return blocks.join('\n');
 }
 
+function parseImageTarget(rawTarget) {
+  const trimmed = String(rawTarget).trim();
+  const titleMatch = trimmed.match(/^(\S+)\s+["'](.+)["']$/);
+  if (titleMatch) {
+    return { src: titleMatch[1], title: titleMatch[2] };
+  }
+  return { src: trimmed, title: '' };
+}
+
+function resolveResourceHref(rawSrc, currentRoute) {
+  const cleanSrc = String(rawSrc).trim();
+  if (/^(https?:\/\/|data:)/i.test(cleanSrc)) {
+    return cleanSrc;
+  }
+
+  const normalized = cleanSrc.replace(/^\.?\//, '');
+  const resourcePath = normalized.startsWith('resources/') || normalized.startsWith('projects/')
+    ? normalized
+    : `resources/${normalized}`;
+
+  return assetHref(currentRoute, resourcePath);
+}
+
+function renderProseImage(alt, rawTarget, currentRoute, inline = false) {
+  const { src, title } = parseImageTarget(rawTarget);
+  const resolvedSrc = resolveResourceHref(src, currentRoute);
+  const captionText = title || alt || '';
+  const ariaLabel = captionText ? `Ampliar imagen: ${captionText}` : 'Ampliar imagen en detalle';
+
+  const triggerMarkup = `
+    <button type="button" class="prose-img-trigger" data-zoom-src="${escapeAttribute(resolvedSrc)}" data-zoom-alt="${escapeAttribute(captionText)}" aria-label="${escapeAttribute(ariaLabel)}">
+      <span class="prose-img-container">
+        <img class="prose-img" src="${escapeAttribute(resolvedSrc)}" alt="${escapeAttribute(alt || captionText)}" loading="lazy">
+        <span class="prose-zoom-badge" aria-hidden="true">[<span class="link-inner">${ZoomInIcon}<span>Zoom</span></span>]</span>
+      </span>
+    </button>
+  `.trim();
+
+  if (inline) {
+    return triggerMarkup;
+  }
+
+  return `
+    <figure class="prose-figure">
+      ${triggerMarkup}
+      ${captionText ? `<figcaption class="prose-caption">${escapeHtml(captionText)}</figcaption>` : ''}
+    </figure>
+  `.trim();
+}
+
 function inlineFormat(text, currentRoute) {
   const escaped = escapeHtml(text);
   return escaped
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_match, alt, rawTarget) => renderProseImage(unescapeHtml(alt), unescapeHtml(rawTarget), currentRoute, true))
     .replace(/\[(.+?)\]\((.+?)\)/g, (_match, label, href) => `<a href="${escapeHtml(routeHref(currentRoute, href))}">${label}</a>`);
+}
+
+function unescapeHtml(value) {
+  return String(value)
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
 }
 
 function summarize(markdown) {
@@ -606,7 +885,7 @@ function summarize(markdown) {
     .replace(/\r\n/g, '\n')
     .split('\n')
     .map((line) => line.trim())
-    .find(Boolean)
+    .find((line) => Boolean(line) && !/^!\[.*\]\(.*\)$/.test(line))
     ?.replace(/^#{1,6}\s+/, '')
     .slice(0, 140) || '';
 }
@@ -692,6 +971,28 @@ async function copyStaticAsset(fileName) {
   const source = path.join(assetsDir, fileName);
   const target = path.join(distDir, fileName);
   await fs.copyFile(source, target);
+}
+
+async function copyMediaResources(sourceDir, targetDir) {
+  await fs.mkdir(targetDir, { recursive: true });
+  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const sourcePath = path.join(sourceDir, entry.name);
+    const targetPath = path.join(targetDir, entry.name);
+
+    if (entry.isDirectory()) {
+      await copyMediaResources(sourcePath, targetPath);
+      continue;
+    }
+
+    const ext = path.extname(entry.name).toLowerCase();
+    if (ext === '.mjs' || ext === '.css') {
+      continue;
+    }
+
+    await fs.copyFile(sourcePath, targetPath);
+  }
 }
 
 async function writePage(relativePath, content) {

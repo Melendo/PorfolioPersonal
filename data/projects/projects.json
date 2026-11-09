@@ -48,22 +48,6 @@
     ]
   },
   {
-    "id": "keeperly",
-    "title": "Keeperly",
-    "role": "Aplicación móvil",
-    "stack": [
-      "Java",
-      "Android"
-    ],
-    "description": "Keeperly es una aplicación móvil nativa para Android diseñada para simplificar y automatizar la gestión de finanzas personales. Resuelve el problema del registro manual tedioso de gastos mediante la sincronización automatizada con cuentas de PayPal Sandbox, permitiendo a los usuarios planificar presupuestos personalizados, organizar transacciones y realizar un seguimiento claro de sus metas financieras en tiempo real.",
-    "links": [
-      {
-        "label": "Repositorio",
-        "url": "https://github.com/Melendo/Keeperly"
-      }
-    ]
-  },
-  {
     "id": "clublagartos",
     "title": "Web del Club Lagartos",
     "role": "Página web",
